@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="genre_header_text">Жанры</string>
+    <string name="film_header_text">Фильмы</string>
+    <string name="error_network_connection">Ошибка подключения сети</string>
+    <string name="snackbar_action_text">ПОВТОРИТЬ</string>
+</resources>

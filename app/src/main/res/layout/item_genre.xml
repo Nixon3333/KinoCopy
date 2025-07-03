@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/genreContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/genreTextView"
+        style="@style/Text.GenreItem"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/genre_item_height"
+        android:paddingHorizontal="@dimen/spacing_large"
+        android:paddingVertical="@dimen/spacing_10"
+        android:gravity="center_vertical"
+        tools:text="Жанр" />
+</FrameLayout>
+

@@ -1,4 +1,4 @@
-package com.drygin.kinocopy.ui.theme
+package com.drygin.kinocopy.common.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

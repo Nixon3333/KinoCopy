@@ -1,0 +1,70 @@
+<resources>
+    <style name="Text.Header" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineSpacingExtra">2sp</item> <!-- 22 (Line height) - 20 (text size)-->
+        <item name="android:letterSpacing">0.005</item> <!--letterSpacing = (spacingPx / fontSizePx)-->
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.GenreItem" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:letterSpacing">0.005</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Text.FilmTitle" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:letterSpacing">0.005</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.ToolbarTitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:letterSpacing">0.0083</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="PosterRoundedCorners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">4dp</item>
+    </style>
+
+    <!-- Snackbar -->
+    <style name="CustomSnackbar" parent="Widget.MaterialComponents.Snackbar.FullWidth">
+        <item name="backgroundTint">@color/snackBackground</item>
+        <item name="android:padding">@dimen/spacing_large</item>
+        <item name="elevation">6dp</item>
+        <item name="shapeAppearance">@style/Shape.Snackbar.Rounded</item>
+    </style>
+
+    <style name="Shape.Snackbar.Rounded" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">2dp</item>
+    </style>
+
+    <style name="CustomSnackbarText" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="CustomSnackbarActionText" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">?attr/colorSecondary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <!-- Snackbar -->
+</resources>
+
