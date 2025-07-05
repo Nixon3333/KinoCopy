@@ -1,13 +1,13 @@
-package com.drygin.kinocopy.features.home.presentation.viewmodel
+package com.drygin.kinocopy.screens.home.presentation.viewmodel
 
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.drygin.kinocopy.R
 import com.drygin.kinocopy.common.data.repository.FilmRepositoryImpl
+import com.drygin.kinocopy.common.domain.model.Film
+import com.drygin.kinocopy.common.domain.model.Genre
 import com.drygin.kinocopy.common.utils.Result
-import com.drygin.kinocopy.features.home.domain.model.Film
-import com.drygin.kinocopy.features.home.domain.model.Genre
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

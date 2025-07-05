@@ -1,7 +1,6 @@
 package com.drygin.kinocopy.common.data.local.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -19,11 +18,14 @@ interface FilmDao {
     @Transaction
     @Query("SELECT * FROM films")
     fun filmsWithGenres(): Flow<List<FilmWithGenres>>
-    @Insert(onConflict = OnConflictStrategy.Companion.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(films: List<FilmEntity>)
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCrossRefs(refs: List<FilmGenreCrossRef>)
 
     @Query("DELETE FROM films")
     suspend fun deleteAll()
+
+    @Query("SELECT * FROM films WHERE id = :filmId")
+    suspend fun get(filmId: Int): FilmWithGenres?
 }

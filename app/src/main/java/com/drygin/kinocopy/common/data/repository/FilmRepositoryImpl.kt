@@ -4,12 +4,13 @@ import com.drygin.kinocopy.common.data.local.dao.FilmDao
 import com.drygin.kinocopy.common.data.local.dao.GenreDao
 import com.drygin.kinocopy.common.data.local.entity.FilmGenreCrossRef
 import com.drygin.kinocopy.common.data.local.entity.GenreEntity
+import com.drygin.kinocopy.common.data.local.relation.FilmWithGenres
 import com.drygin.kinocopy.common.data.mapper.toDomain
 import com.drygin.kinocopy.common.data.mapper.toEntity
 import com.drygin.kinocopy.common.data.remote.api.FilmApi
+import com.drygin.kinocopy.common.domain.model.Film
+import com.drygin.kinocopy.common.domain.repository.FilmRepository
 import com.drygin.kinocopy.common.utils.Result
-import com.drygin.kinocopy.features.home.domain.model.Film
-import com.drygin.kinocopy.features.home.domain.repository.FilmRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -26,13 +27,14 @@ class FilmRepositoryImpl(
         filmDao.filmsWithGenres().map { entities -> entities.map { it.toDomain() } }
 
     override suspend fun refreshFilms(): Result<List<Film>> = try {
+        filmDao.deleteAll()
+
         val response = api.getFilms().filmDtoList
         val filmEntities = response.map { it.toEntity() }
         val genreEntities = response.flatMap { it.genres }.distinct().map { GenreEntity(it) }
         val crossRefs = response.flatMap { film ->
             film.genres.map { genre -> FilmGenreCrossRef(film.id, genre) }
         }
-        filmDao.deleteAll()
 
         filmDao.insertAll(filmEntities)
         genreDao.insertGenres(genreEntities)
@@ -43,4 +45,6 @@ class FilmRepositoryImpl(
     } catch (e: Exception) {
         Result.Failure(e)
     }
+
+    override suspend fun getFilm(filmId: Int): FilmWithGenres? = filmDao.get(filmId)
 }

@@ -4,4 +4,6 @@
     <string name="film_header_text">Films</string>
     <string name="error_network_connection">Network connection error</string>
     <string name="snackbar_action_text">RETRY</string>
+    <string name="rating_label_placeholder">КиноПоиск</string>
+    <string name="details_year_text">year</string>
 </resources>

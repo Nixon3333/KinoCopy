@@ -1,4 +1,4 @@
-package com.drygin.kinocopy.common.ui
+package com.drygin.kinocopy.screens.home.presentation.ui
 
 import android.graphics.Rect
 import android.view.View

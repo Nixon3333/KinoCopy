@@ -3,7 +3,7 @@ package com.drygin.kinocopy.common.data.mapper
 import com.drygin.kinocopy.common.data.local.entity.FilmEntity
 import com.drygin.kinocopy.common.data.local.relation.FilmWithGenres
 import com.drygin.kinocopy.common.data.remote.model.FilmDto
-import com.drygin.kinocopy.features.home.domain.model.Film
+import com.drygin.kinocopy.common.domain.model.Film
 
 /**
  * Created by Drygin Nikita on 03.07.2025.

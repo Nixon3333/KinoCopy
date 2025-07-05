@@ -1,7 +1,8 @@
-package com.drygin.kinocopy.features.home.domain.repository
+package com.drygin.kinocopy.common.domain.repository
 
+import com.drygin.kinocopy.common.data.local.relation.FilmWithGenres
+import com.drygin.kinocopy.common.domain.model.Film
 import com.drygin.kinocopy.common.utils.Result
-import com.drygin.kinocopy.features.home.domain.model.Film
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -10,4 +11,5 @@ import kotlinx.coroutines.flow.Flow
 interface FilmRepository {
     suspend fun refreshFilms(): Result<List<Film>>
     fun getFilms(): Flow<List<Film>>
+    suspend fun getFilm(filmId: Int) : FilmWithGenres?
 }

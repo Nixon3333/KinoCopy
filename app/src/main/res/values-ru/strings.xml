@@ -4,4 +4,6 @@
     <string name="film_header_text">Фильмы</string>
     <string name="error_network_connection">Ошибка подключения сети</string>
     <string name="snackbar_action_text">ПОВТОРИТЬ</string>
+    <string name="rating_label_placeholder">КиноПоиск</string>
+    <string name="details_year_text">год</string>
 </resources>

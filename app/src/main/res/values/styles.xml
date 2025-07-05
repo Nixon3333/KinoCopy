@@ -4,7 +4,7 @@
         <item name="android:lineSpacingExtra">2sp</item> <!-- 22 (Line height) - 20 (text size)-->
         <item name="android:letterSpacing">0.005</item> <!--letterSpacing = (spacingPx / fontSizePx)-->
         <item name="android:textColor">?attr/colorOnSurface</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -13,7 +13,7 @@
         <item name="android:lineSpacingExtra">4sp</item>
         <item name="android:letterSpacing">0.005</item>
         <item name="android:textColor">?attr/colorOnSurface</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textStyle">normal</item>
     </style>
 
@@ -22,12 +22,12 @@
         <item name="android:lineSpacingExtra">4sp</item>
         <item name="android:letterSpacing">0.005</item>
         <item name="android:textColor">?attr/colorOnSurface</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TextAppearance.ToolbarTitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">18sp</item>
         <item name="android:lineSpacingExtra">4sp</item>

@@ -1,4 +1,4 @@
-package com.drygin.kinocopy.features.home.domain.model
+package com.drygin.kinocopy.common.domain.model
 
 /**
  * Created by Drygin Nikita on 03.07.2025.

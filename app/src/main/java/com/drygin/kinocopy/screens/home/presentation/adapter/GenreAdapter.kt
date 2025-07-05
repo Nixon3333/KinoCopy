@@ -1,4 +1,4 @@
-package com.drygin.kinocopy.features.home.presentation.adapter
+package com.drygin.kinocopy.screens.home.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.drygin.kinocopy.R
+import com.drygin.kinocopy.common.domain.model.Genre
 import com.drygin.kinocopy.databinding.ItemGenreBinding
-import com.drygin.kinocopy.features.home.domain.model.Genre
 
 /**
  * Created by Drygin Nikita on 03.07.2025.

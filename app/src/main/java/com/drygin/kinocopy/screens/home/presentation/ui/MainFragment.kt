@@ -1,4 +1,4 @@
-package com.drygin.kinocopy.features.home.presentation.ui
+package com.drygin.kinocopy.screens.home.presentation.ui
 
 import android.os.Bundle
 import android.view.View
@@ -8,14 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.drygin.kinocopy.R
-import com.drygin.kinocopy.common.ui.GridItemDecoration
 import com.drygin.kinocopy.databinding.FragmentMainBinding
-import com.drygin.kinocopy.features.home.presentation.adapter.FilmAdapter
-import com.drygin.kinocopy.features.home.presentation.adapter.GenreAdapter
-import com.drygin.kinocopy.features.home.presentation.viewmodel.MainFragmentViewModel
+import com.drygin.kinocopy.screens.home.presentation.adapter.FilmAdapter
+import com.drygin.kinocopy.screens.home.presentation.adapter.GenreAdapter
+import com.drygin.kinocopy.screens.home.presentation.viewmodel.MainFragmentViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -51,8 +51,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             adapter = genreAdapter
         }
 
-        filmAdapter = FilmAdapter {
-            showErrorSnackbar(it.localizedName ?: "")
+        filmAdapter = FilmAdapter { filmId ->
+            val action = MainFragmentDirections.actionMainFragmentToDetailsFragment(filmId)
+            findNavController().navigate(action)
         }
 
         binding.moviesRecyclerView.apply {
