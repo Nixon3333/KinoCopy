@@ -1,9 +1,9 @@
-package com.drygin.kinocopy.features.home.presentation.model
+package com.drygin.kinocopy.features.home.domain.model
 
 /**
  * Created by Drygin Nikita on 03.07.2025.
  */
-data class GenreItem(
+data class Genre(
     val name: String,
     val isSelected: Boolean
 )

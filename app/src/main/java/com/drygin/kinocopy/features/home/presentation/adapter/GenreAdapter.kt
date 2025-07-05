@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.drygin.kinocopy.R
 import com.drygin.kinocopy.databinding.ItemGenreBinding
-import com.drygin.kinocopy.features.home.presentation.model.GenreItem
+import com.drygin.kinocopy.features.home.domain.model.Genre
 
 /**
  * Created by Drygin Nikita on 03.07.2025.
  */
 class GenreAdapter(
     private val onGenreClick: (String) -> Unit
-) : ListAdapter<GenreItem, GenreAdapter.GenreViewHolder>(GenreDiffCallback) {
+) : ListAdapter<Genre, GenreAdapter.GenreViewHolder>(GenreDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -32,7 +32,7 @@ class GenreAdapter(
         private val onClick: (String) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: GenreItem)  = with(binding) {
+        fun bind(item: Genre)  = with(binding) {
             genreTextView.text = item.name
             val backgroundColor = ContextCompat.getColor(
                 root.context,
@@ -45,11 +45,11 @@ class GenreAdapter(
         }
     }
 
-    object GenreDiffCallback : DiffUtil.ItemCallback<GenreItem>() {
-        override fun areItemsTheSame(old: GenreItem, new: GenreItem): Boolean =
+    object GenreDiffCallback : DiffUtil.ItemCallback<Genre>() {
+        override fun areItemsTheSame(old: Genre, new: Genre): Boolean =
             old.name == new.name
 
-        override fun areContentsTheSame(old: GenreItem, new: GenreItem): Boolean =
+        override fun areContentsTheSame(old: Genre, new: Genre): Boolean =
             old == new
     }
 }

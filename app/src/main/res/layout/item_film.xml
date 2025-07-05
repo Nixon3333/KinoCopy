@@ -15,11 +15,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintDimensionRatio="2:3"
-        android:scaleType="centerCrop"
-        android:background="@drawable/bg_placeholder_rounded"
-        android:foreground="@drawable/ic_placeholder_centered"
+        android:scaleType="center"
+        android:src="@drawable/ic_placeholder"
+        android:background="@color/bgPlaceholder"
         app:shapeAppearanceOverlay="@style/PosterRoundedCorners" />
-
 
     <TextView
         android:id="@+id/titleTextView"

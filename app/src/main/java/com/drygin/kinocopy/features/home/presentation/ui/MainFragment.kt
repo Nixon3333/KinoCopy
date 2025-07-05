@@ -13,10 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.drygin.kinocopy.R
 import com.drygin.kinocopy.common.ui.GridItemDecoration
 import com.drygin.kinocopy.databinding.FragmentMainBinding
-import com.drygin.kinocopy.features.home.presentation.MainFragmentEvent
-import com.drygin.kinocopy.features.home.presentation.MainFragmentViewModel
 import com.drygin.kinocopy.features.home.presentation.adapter.FilmAdapter
 import com.drygin.kinocopy.features.home.presentation.adapter.GenreAdapter
+import com.drygin.kinocopy.features.home.presentation.viewmodel.MainFragmentViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -73,16 +72,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                         binding.progressBar.isVisible = state.isLoading
 
                         genreAdapter.submitList(state.genres)
-                        binding.genreHeader.isVisible = state.genres.isNotEmpty()
 
                         filmAdapter.submitList(state.films)
+                        binding.genreHeader.isVisible = state.films.isNotEmpty()
                         binding.filmHeader.isVisible = state.films.isNotEmpty()
-                    }
-                }
-                launch {
-                    viewModel.events.collect { event ->
-                        when (event) {
-                            is MainFragmentEvent.ShowError -> showErrorSnackbar(getString(event.resId))
+
+                        state.resId?.let { resId ->
+                            showErrorSnackbar(getString(resId))
                         }
                     }
                 }

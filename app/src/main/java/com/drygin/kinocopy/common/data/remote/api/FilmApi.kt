@@ -1,6 +1,6 @@
-package com.drygin.kinocopy.features.home.data.api
+package com.drygin.kinocopy.common.data.remote.api
 
-import com.drygin.kinocopy.features.home.data.model.FilmResponse
+import com.drygin.kinocopy.common.data.remote.model.FilmResponse
 import retrofit2.http.GET
 
 /**
