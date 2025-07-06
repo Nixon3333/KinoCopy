@@ -8,6 +8,7 @@ import com.drygin.kinocopy.common.domain.model.Film
 import com.drygin.kinocopy.common.domain.repository.FilmRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 /**
@@ -19,11 +20,13 @@ class DetailsViewModel(
 ) : ViewModel() {
 
     private val _film = MutableStateFlow<Film?>(null)
-    val film: StateFlow<Film?> = _film
+    val film: StateFlow<Film?> = _film.asStateFlow()
 
     init {
-        val filmId = checkNotNull(savedStateHandle.get<Int>("filmId"))
-        loadFilm(filmId)
+        val filmId = savedStateHandle.get<Int>("filmId")
+        filmId?.let {
+            loadFilm(it)
+        }
     }
 
     private fun loadFilm(filmId: Int) {

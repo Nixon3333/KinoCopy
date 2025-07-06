@@ -26,7 +26,8 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextAppearance.ToolbarTitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+    <!--Toolbar-->
+    <style name="Text.ToolbarTitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">18sp</item>
@@ -36,6 +37,7 @@
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center</item>
     </style>
+    <!--Toolbar-->
 
     <style name="PosterRoundedCorners" parent="">
         <item name="cornerFamily">rounded</item>

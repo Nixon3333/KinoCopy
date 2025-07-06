@@ -21,7 +21,8 @@ data class MainFragmentUiState(
     val isLoading: Boolean = false,
     val genres: List<Genre> = emptyList(),
     val films: List<Film> = emptyList(),
-    @param:StringRes val resId: Int? = null
+    val selectedGenre: String? = null,
+    @param:StringRes val errorMessageResId: Int? = null
 )
 
 class MainFragmentViewModel(
@@ -46,17 +47,15 @@ class MainFragmentViewModel(
 
     private fun refresh() {
         viewModelScope.launch {
-            _uiState.update { it.copy(isLoading = true) }
+            _uiState.update { it.copy(isLoading = true, errorMessageResId = null) }
             val result = repository.refreshFilms()
-            when (result) {
-                is Result.Failure -> {
-                    _uiState.update { it.copy(resId = R.string.error_network_connection) }
-                }
-                is Result.Success -> {
-                    _uiState.update { it.copy(resId = null) }
-                }
+
+            val errorMessageResId = when (result) {
+                is Result.Failure -> R.string.error_network_connection
+                is Result.Success -> null
             }
-            _uiState.update { it.copy(isLoading = false) }
+
+            _uiState.update { it.copy(isLoading = false, errorMessageResId = errorMessageResId) }
         }
     }
 
@@ -76,7 +75,7 @@ class MainFragmentViewModel(
     }
 
     private fun rebuildUiState() {
-        val filtered = selectedGenre?.let { selected ->
+        val filtered = uiState.value.selectedGenre?.let { selected ->
             films.filter { selected in it.genres }
         } ?: films
 
@@ -93,7 +92,8 @@ class MainFragmentViewModel(
     }
 
     fun onGenreSelected(genre: String) {
-        selectedGenre = if (selectedGenre == genre) null else genre
+        selectedGenre = if (uiState.value.selectedGenre == genre) null else genre
+        _uiState.update { it.copy(selectedGenre = selectedGenre) }
         rebuildUiState()
     }
 }

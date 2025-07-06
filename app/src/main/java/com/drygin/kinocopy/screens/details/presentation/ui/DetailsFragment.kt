@@ -2,6 +2,7 @@ package com.drygin.kinocopy.screens.details.presentation.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -28,17 +29,21 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         _binding = FragmentDetailsBinding.bind(view)
 
-        binding.topAppBar.setNavigationOnClickListener {
+        binding.toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.film.filterNotNull().collect { film ->
-                    binding.topAppBar.setTitle(film.name)
+                    binding.toolbar.title = film.name
                 }
             }
         }
+
+        binding.composeView.setViewCompositionStrategy(
+            ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+        )
 
         binding.composeView.setContent {
             KinoCopyTheme {

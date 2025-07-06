@@ -37,8 +37,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMainBinding.bind(view)
 
+        setupToolbar()
         setupRecyclerViews()
         observeState()
+    }
+
+    private fun setupToolbar() {
+        binding.toolbar.title = getString(R.string.film_header_text)
     }
 
     private fun setupRecyclerViews() {
@@ -61,8 +66,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             adapter = filmAdapter
             addItemDecoration(GridItemDecoration(spacing, edgeSpacing))
         }
-
-        binding.topAppBar.title = getString(R.string.film_header_text)
     }
 
     private fun observeState() {
@@ -73,12 +76,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                         binding.progressBar.isVisible = state.isLoading
 
                         genreAdapter.submitList(state.genres)
+                        binding.genreHeader.isVisible = state.genres.isNotEmpty()
 
                         filmAdapter.submitList(state.films)
-                        binding.genreHeader.isVisible = state.films.isNotEmpty()
                         binding.filmHeader.isVisible = state.films.isNotEmpty()
 
-                        state.resId?.let { resId ->
+                        state.errorMessageResId?.let { resId ->
                             showErrorSnackbar(getString(resId))
                         }
                     }
@@ -97,5 +100,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             ?.setTextAppearance(R.style.CustomSnackbarActionText)
 
         snackbar.show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
