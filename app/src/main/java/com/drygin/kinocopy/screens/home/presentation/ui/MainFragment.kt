@@ -1,7 +1,9 @@
 package com.drygin.kinocopy.screens.home.presentation.ui
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -33,9 +35,17 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private lateinit var genreAdapter: GenreAdapter
     private lateinit var filmAdapter: FilmAdapter
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        return _binding!!.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentMainBinding.bind(view)
 
         setupToolbar()
         setupRecyclerViews()

@@ -17,6 +17,11 @@ import kotlinx.coroutines.launch
 /**
  * Created by Drygin Nikita on 02.07.2025.
  */
+
+/**
+ * errorMessageResId хранится в UI-состоянии, чтобы Snackbar переживал поворот экрана.
+ * В рамках ТЗ его action - единственный способ обновить данные после ошибки.
+ */
 data class MainFragmentUiState(
     val isLoading: Boolean = false,
     val genres: List<Genre> = emptyList(),
